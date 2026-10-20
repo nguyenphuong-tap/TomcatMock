@@ -1,4 +1,4 @@
-package com.example.model;
+package main.java.com.tap.web.pos.model;
 
 import java.math.BigDecimal;
 

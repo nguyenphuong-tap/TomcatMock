@@ -1,6 +1,6 @@
-package com.example.mapper;
+package main.java.com.tap.web.pos.mapper;
 
-import com.example.model.Product;
+import main.java.com.tap.web.pos.model.Product;
 import java.util.List;
 
 public interface ProductMapper {

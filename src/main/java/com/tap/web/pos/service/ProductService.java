@@ -1,7 +1,7 @@
-package com.example.service;
+package main.java.com.tap.web.pos.service;
 
-import com.example.mapper.ProductMapper;
-import com.example.model.Product;
+import main.java.com.tap.web.pos.mapper.ProductMapper;
+import main.java.com.tap.web.pos.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
