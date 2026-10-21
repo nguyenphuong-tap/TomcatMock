@@ -1,0 +1,31 @@
+<div class="product-search">
+    <input class="product-search__input" type="search" aria-label="Tìm kiếm sản phẩm"
+           placeholder="Tìm kiếm sản phẩm..." [(ngModel)]="searchTerm" />
+    <button class="product-search__button" type="button"
+            (click)="filterProducts()" [disabled]="loading">Tìm</button>
+</div>
+
+<!--<div role="status" aria-live="polite">-->
+<!--    <p *ngIf="loading">Đang tải sản phẩm...</p>-->
+<!--    <p *ngIf="errorMessage">{{ errorMessage }}</p>-->
+<!--    <p *ngIf="!loading && !loaded && !errorMessage">Nhấn Tải lại để xem sản phẩm.</p>-->
+<!--    <p *ngIf="loaded && products.length === 0">Chưa có sản phẩm.</p>-->
+<!--</div>-->
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | number }}</td>
+        <td>{{ product.quantity }}</td>
+    </tr>
+    </tbody>
+</table>

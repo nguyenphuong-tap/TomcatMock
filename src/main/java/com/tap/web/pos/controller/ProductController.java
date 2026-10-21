@@ -1,7 +1,7 @@
-package main.java.com.tap.web.pos.controller;
+package com.tap.web.pos.controller;
 
-import main.java.com.tap.web.pos.model.Product;
-import main.java.com.tap.web.pos.service.ProductService;
+import com.tap.web.pos.model.Product;
+import com.tap.web.pos.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
