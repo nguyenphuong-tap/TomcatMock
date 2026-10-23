@@ -1,0 +1,26 @@
+{
+  "name": "tomcatmock-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.cjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@angular/common": "4.4.7",
+    "@angular/compiler": "4.4.7",
+    "@angular/core": "4.4.7",
+    "@angular/forms": "4.4.7",
+    "@angular/platform-browser": "4.4.7",
+    "@angular/platform-browser-dynamic": "4.4.7",
+    "reflect-metadata": "0.1.14",
+    "rxjs": "5.4.3",
+    "tslib": "1.14.1",
+    "zone.js": "0.8.29"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "typescript": "2.5.3"
+  },
+  "engines": { "node": ">=20" }
+}

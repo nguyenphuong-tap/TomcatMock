@@ -31,6 +31,7 @@ public class ProductService {
         List<Product> products = productMapper.searchProducts(search);
         return new PageResult<>(products, page, size, total);
     }
+
     @Transactional
     public Product createProduct(Product product) {
         validateProduct(product);
@@ -43,7 +44,6 @@ public class ProductService {
 
     @Transactional
     public Product updateProduct(Integer id, Product product) {
-        validateId(id);
         validateProduct(product);
         product.setId(id);
         int rowsAffected = productMapper.updateProduct(product);
@@ -55,16 +55,9 @@ public class ProductService {
 
     @Transactional
     public void deleteProduct(Integer id) {
-        validateId(id);
         int rowsAffected = productMapper.deleteProduct(id);
         if(rowsAffected == 0) {
             throw new ProductNotFoundException(id);
-        }
-    }
-
-    private void validateId(Integer id) {
-        if (id == null || id <= 0) {
-            throw new IllegalArgumentException("Product id must be positive");
         }
     }
 

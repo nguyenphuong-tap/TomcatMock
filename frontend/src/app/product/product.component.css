@@ -40,7 +40,6 @@
 .product-filter:first-child { flex-grow: 2; }
 .product-filter input { width: 100%; font-weight: 400; }
 .product-reset { background: #fff; color: #175cd3; }
-.product-reset:hover:not(:disabled) { background: #eff4ff; color: #1849a9; }
 .product-error { color: #b42318; }
 .product-pagination { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 20px; }
 .product-pagination select { padding: 8px; border: 1px solid #d0d5dd; border-radius: 6px; font: inherit; }

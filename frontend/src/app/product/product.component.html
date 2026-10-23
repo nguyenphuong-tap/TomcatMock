@@ -1,42 +1,35 @@
-<!--<div role="status" aria-live="polite">-->
-<!--    <p *ngIf="loading">Đang tải sản phẩm...</p>-->
-<!--    <p *ngIf="errorMessage">{{ errorMessage }}</p>-->
-<!--    <p *ngIf="!loading && !loaded && !errorMessage">Nhấn Tải lại để xem sản phẩm.</p>-->
-<!--    <p *ngIf="loaded && products.length === 0">Chưa có sản phẩm.</p>-->
-<!--</div>-->
-
 <div class="product-list">
+    <div class="product-add-container">
+        <button class="product-add-button" type="button" (click)="createProduct()"
+                [disabled]="loading">Add product
+        </button>
+    </div>
     <form class="product-search" (ngSubmit)="filterProducts()">
         <label class="product-filter">
-            <span>Tên sản phẩm</span>
+            <span>Product name</span>
             <input class="product-search-input" name="searchTerm" type="search"
-                   placeholder="Nhập tên sản phẩm..." [(ngModel)]="searchTerm" [disabled]="loading"/>
+                   placeholder="Enter a product name..." [(ngModel)]="searchTerm" [disabled]="loading"/>
         </label>
         <label class="product-filter">
-            <span>Giá từ</span>
+            <span>Minimum price</span>
             <input class="product-search-input" name="minPrice" type="number" min="0" step="any"
-                   placeholder="Không giới hạn" [(ngModel)]="minPrice" [disabled]="loading"/>
+                   placeholder="No limit" [(ngModel)]="minPrice" [disabled]="loading"/>
         </label>
         <label class="product-filter">
-            <span>Giá đến</span>
+            <span>Maximum price</span>
             <input class="product-search-input" name="maxPrice" type="number" min="0" step="any"
-                   placeholder="Không giới hạn" [(ngModel)]="maxPrice" [disabled]="loading"/>
+                   placeholder="No limit" [(ngModel)]="maxPrice" [disabled]="loading"/>
         </label>
-        <button class="product-search-button" type="submit" [disabled]="loading">Tìm</button>
+        <button class="product-search-button" type="submit" [disabled]="loading">Search</button>
         <button class="product-search-button product-reset" type="button"
-                (click)="resetFilters()" [disabled]="loading">Xóa bộ lọc
+                (click)="resetFilters()" [disabled]="loading">Clear filters
         </button>
     </form>
     <div role="status" aria-live="polite">
         <p *ngIf="validationMessage" class="product-error">{{ validationMessage }}</p>
-        <p *ngIf="loading">Đang tải sản phẩm...</p>
+        <p *ngIf="loading">Loading products...</p>
         <p *ngIf="errorMessage" class="product-error">{{ errorMessage }}</p>
-        <p *ngIf="loaded && products.length === 0">Không tìm thấy sản phẩm phù hợp.</p>
-    </div>
-    <div class="product-add-container">
-        <button class="product-add-button" type="button" severity="success" (click)="createProduct()"
-                [disabled]="loading">Thêm sản phẩm
-        </button>
+        <p *ngIf="loaded && products.length === 0">No matching products found.</p>
     </div>
 
     <div class="table-container">
@@ -44,10 +37,10 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Tên sản phẩm</th>
-                <th>Giá</th>
-                <th>Số lượng</th>
-                <th>Hành động</th>
+                <th>Product name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -57,11 +50,11 @@
                 <td>{{ product.price | number }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>
-                    <button type="button" class="product-update-button" severity="warning"
-                            (click)="updateProduct(product)" [disabled]="loading">Sửa
+                    <button type="button" class="product-update-button"
+                            (click)="updateProduct(product)" [disabled]="loading">Edit
                     </button>
-                    <button type="button" class="product-delete-button" severity="danger"
-                            (click)="deleteProduct(product)" [disabled]="loading || deleting">Xóa
+                    <button type="button" class="product-delete-button"
+                            (click)="deleteProduct(product)" [disabled]="loading || deleting">Delete
                     </button>
                 </td>
             </tr>
@@ -69,24 +62,22 @@
         </table>
     </div>
     <div class="product-pagination">
-        <label>Số dòng:
+        <label>Rows per page:
             <select [ngModel]="pageSize" (ngModelChange)="pageSize = $event; changePageSize()"
                     [disabled]="loading">
-                <option [ngValue]="5">5</option>
                 <option [ngValue]="10">10</option>
                 <option [ngValue]="20">20</option>
-                <option [ngValue]="50">50</option>
             </select>
         </label>
-        <span *ngIf="loaded">Tổng {{ totalElements }} sản phẩm · Trang {{ totalPages === 0 ? 0 : page }}
+        <span *ngIf="loaded">{{ totalElements }} products total · Page {{ totalPages === 0 ? 0 : page }}
             /{{ totalPages }}</span>
         <button type="button" (click)="changePage(page - 1)"
-                [disabled]="loading || !loaded || page <= 1">Trước
+                [disabled]="loading || !loaded || page <= 1">Previous
         </button>
         <button type="button" (click)="changePage(page + 1)"
-                [disabled]="loading || !loaded || page >= totalPages">Sau
+                [disabled]="loading || !loaded || page >= totalPages">Next
         </button>
-        <button *ngIf="errorMessage" type="button" (click)="getProducts()" [disabled]="loading">Thử lại</button>
+        <button *ngIf="errorMessage" type="button" (click)="getProducts()" [disabled]="loading">Retry</button>
     </div>
 </div>
 <create-update-product-modal
@@ -97,4 +88,3 @@
 </create-update-product-modal>
 <delete-product-modal #deleteProductModal (confirm)="confirmDeleteProduct($event)">
 </delete-product-modal>
-

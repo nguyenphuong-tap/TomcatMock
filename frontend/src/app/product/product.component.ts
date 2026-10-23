@@ -1,13 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/finally';
 import template = require('./product.component.html');
 import styles = require('./product.component.css');
-import { Product} from "./product.model";
+import { Product } from './product.model';
 import { ProductService } from './product.service';
 import { ProductFilters } from './product-page.model';
 import { CreateUpdateProductModalComponent } from './create-update-product-modal/create-update-product-modal.component';
-import { ViewChild } from '@angular/core';
 import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
 
 @Component({
@@ -75,7 +74,7 @@ export class ProductComponent implements OnInit, OnDestroy {
                 this.loaded = true;
             }, error => {
                 console.error('Unable to load products', error);
-                this.errorMessage = 'Không thể tải sản phẩm. Kiểm tra API và log Tomcat.';
+                this.errorMessage = 'Unable to load products. Check the API and Tomcat logs.';
             });
     }
 
@@ -86,11 +85,11 @@ export class ProductComponent implements OnInit, OnDestroy {
         this.validationMessage = '';
         if ((this.minPrice !== null && (!Number.isFinite(this.minPrice) || this.minPrice < 0))
                 || (this.maxPrice !== null && (!Number.isFinite(this.maxPrice) || this.maxPrice < 0))) {
-            this.validationMessage = 'Giá phải là số không âm.';
+            this.validationMessage = 'Prices must be non-negative numbers.';
             return;
         }
         if (this.minPrice !== null && this.maxPrice !== null && this.minPrice > this.maxPrice) {
-            this.validationMessage = 'Giá từ không được lớn hơn giá đến.';
+            this.validationMessage = 'The minimum price cannot exceed the maximum price.';
             return;
         }
         this.appliedFilters = {
@@ -142,14 +141,14 @@ export class ProductComponent implements OnInit, OnDestroy {
                 this.getProducts();
             }, error => {
                 console.error('Unable to update product', error);
-                this.errorMessage = 'Không thể cập nhật sản phẩm. Kiểm tra API và log Tomcat.';
+                this.errorMessage = 'Unable to update the product. Check the API and Tomcat logs.';
             });
         } else {
             this.productService.createProduct(product).subscribe(() => {
                 this.getProducts();
             }, error => {
                 console.error('Unable to create product', error);
-                this.errorMessage = 'Không thể tạo sản phẩm. Kiểm tra API và log Tomcat.';
+                this.errorMessage = 'Unable to create the product. Check the API and Tomcat logs.';
             });
         }
     }
@@ -173,7 +172,7 @@ export class ProductComponent implements OnInit, OnDestroy {
                 this.getProducts();
             }, error => {
                 console.error('Unable to delete product', error);
-                this.errorMessage = 'Không thể xóa sản phẩm. Kiểm tra API và log Tomcat.';
+                this.errorMessage = 'Unable to delete the product. Check the API and Tomcat logs.';
             });
     }
 

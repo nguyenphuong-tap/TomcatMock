@@ -1,0 +1,6 @@
+dialog.custom-dialog { width: calc(100% - 32px); }
+.dialog-body p { margin: 0 0 12px; overflow-wrap: anywhere; }
+.dialog-body .delete-warning { margin-bottom: 0; color: #6c757d; }
+.btn-danger { background: #dc2626; color: white; }
+.btn-danger:hover { background: #b91c1c; }
+button:focus-visible { outline: 3px solid #84adff; outline-offset: 2px; }

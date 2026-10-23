@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_ERR">
+            <PatternLayout charset="UTF-8"
+                pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] %logger{36} - %msg%n%throwable" />
+        </Console>
+        <RollingFile name="ApplicationFile"
+                     fileName="${sys:catalina.base:-out}/logs/tomcatmock.log"
+                     filePattern="${sys:catalina.base:-out}/logs/tomcatmock-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout charset="UTF-8"
+                pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] %logger{36} - %msg%n%throwable" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="5">
+                <Delete basePath="${sys:catalina.base:-out}/logs" maxDepth="1">
+                    <IfFileName glob="tomcatmock-*.log.gz" />
+                    <IfLastModified age="14d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.tap.web.pos" level="info" />
+        <Root level="warn">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="ApplicationFile" />
+        </Root>
+    </Loggers>
+</Configuration>
