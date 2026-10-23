@@ -1,6 +1,5 @@
-package com.tap.web.pos.controller;
+package com.tap.web.pos.exception;
 
-import com.tap.web.pos.exception.ProductNotFoundException;
 import com.tap.web.pos.model.ApiResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

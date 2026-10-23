@@ -1,10 +1,12 @@
 import {ElementRef, EventEmitter, Input, Output, ViewChild, Component} from "@angular/core";
-import {Product} from "../product.model";
+import {Product} from "../models/product.model";
+import template = require('./create-update-product-modal.component.html');
+import styles = require('./create-update-product-modal.component.css');
 
 @Component({
     selector: 'create-update-product-modal',
-    styleUrls: ['product/create-update-product-modal/create-update-product-modal.component.css'],
-    templateUrl: 'product/create-update-product-modal/create-update-product-modal.component.html'
+    styles: [styles],
+    template: template
 })
 export class CreateUpdateProductModalComponent {
     @ViewChild('productFormDialog') dialogRef: ElementRef;

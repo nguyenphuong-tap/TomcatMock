@@ -1,13 +1,13 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
-import { Product } from '../product.model';
+import { Product } from '../models/product.model';
+import template = require('./delete-product-modal.component.html');
+import sharedStyles = require('../create-update-product-modal/create-update-product-modal.component.css');
+import styles = require('./delete-product-modal.component.css');
 
 @Component({
     selector: 'delete-product-modal',
-    styleUrls: [
-        'product/create-update-product-modal/create-update-product-modal.component.css',
-        'product/delete-product-modal/delete-product-modal.component.css'
-    ],
-    templateUrl: 'product/delete-product-modal/delete-product-modal.component.html'
+    styles: [sharedStyles, styles],
+    template: template
 })
 export class DeleteProductModalComponent {
     @ViewChild('deleteDialog') dialogRef: ElementRef;

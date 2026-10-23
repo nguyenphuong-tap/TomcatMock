@@ -3,9 +3,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout';
-import { Product } from './product.model';
-import { ApiResponse } from './api-response.model';
-import { ProductFilters, ProductPage } from './product-page.model';
+import { Product } from './models/product.model';
+import { ApiResponse } from '../shared/models/api-response.model';
+import { ProductFilters, ProductPage } from './models/product-page.model';
 
 @Injectable()
 export class ProductService {

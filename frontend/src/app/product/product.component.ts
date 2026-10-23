@@ -3,9 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/finally';
 import template = require('./product.component.html');
 import styles = require('./product.component.css');
-import { Product } from './product.model';
+import { Product } from './models/product.model';
 import { ProductService } from './product.service';
-import { ProductFilters } from './product-page.model';
+import { ProductFilters } from './models/product-page.model';
 import { CreateUpdateProductModalComponent } from './create-update-product-modal/create-update-product-modal.component';
 import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
 
